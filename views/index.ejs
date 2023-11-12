@@ -1,0 +1,22 @@
+<!-- views/index.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Page</title>
+</head>
+<body>
+    <h1>Chat Page</h1>
+    <form action="/" method="post">
+        <label for="userInput">Enter your message:</label>
+        <input type="text" id="userInput" name="userInput" required>
+        <button type="submit">Submit</button>
+    </form>
+
+    <% if (chatResponse !== null) { %>
+        <h2>Chat Response:</h2>
+        <p><%= chatResponse %></p>
+    <% } %>
+</body>
+</html>
