@@ -5,18 +5,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chat Page</title>
+    <style>
+        .chat-container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .message {
+            margin: 10px;
+            padding: 8px;
+            border-radius: 5px;
+        }
+
+        .user-message {
+            background-color: #e6f7ff;
+        }
+
+        .bot-message {
+            background-color: #d9f5d9;
+        }
+    </style>
 </head>
 <body>
     <h1>Chat Page</h1>
+
+    <div class="chat-container">
+        <% if (chatHistory && chatHistory.length > 0) { %>
+            <% chatHistory.forEach(message => { %>
+                <div class="message <%= message.role === 'user' ? 'user-message' : 'bot-message' %>">
+                    <%= message.content %>
+                </div>
+            <% }); %>
+        <% } %>
+    </div>
+
     <form action="/" method="post">
         <label for="userInput">Enter your message:</label>
         <input type="text" id="userInput" name="userInput" required>
         <button type="submit">Submit</button>
     </form>
-
-    <% if (chatResponse !== null) { %>
-        <h2>Chat Response:</h2>
-        <p><%= chatResponse %></p>
-    <% } %>
 </body>
 </html>

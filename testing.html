@@ -1,0 +1,42 @@
+<!-- views/index.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Page</title>
+</head>
+<body>
+    <h1>Chat Page</h1>
+    <form action="/" method="post" onsubmit="displayUserInput(event)">
+        <label for="userInput">Enter your message:</label>
+        <input type="text" id="userInput" name="userInput" required>
+        <button type="submit">Submit</button>
+    </form>
+
+    <div id="displayArea"></div>
+
+    <script>
+        function displayUserInput(event) {
+            event.preventDefault(); // Prevent the form from submitting the traditional way
+
+            // Get the user input value
+            var userInput = document.getElementById("userInput").value;
+
+            // Display the user input in a div
+            var displayArea = document.getElementById("displayArea");
+            displayArea.innerHTML = "<p>User Input: " + userInput + "</p>";
+        }
+    </script>
+    
+    <div>
+        <% if (chatResponse !== null) { %>
+            <h2>Chat Response:</h2>
+            <p><%= chatResponse %></p>
+        <% } %>
+    </div>
+    
+
+    
+</body>
+</html>
